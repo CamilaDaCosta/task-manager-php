@@ -5,11 +5,9 @@ session_start();//INICIA A SESSÃO
 if(!isset($_SESSION['tasks'])){ //VERIFICA SE NA SESSÃO INICIADA A CHAVE ['task'] JA FOI DEFINIDA
     $_SESSION['tasks'] = array(); //SE NÃO FOR, É INICIALIZADA COMO ARRAY VAZIO
 }
+echo("AULA04 - RETORNO: ");
+var_dump($_SESSION['tasks']);//aula04 - verificar todos os dados da sessao
 
-if(isset($_GET['clear'])){ //VERIFICA SE EXISTE clear NA REQUISIÇÃO
-    unset($_SESSION['tasks']); //REMOVE OS VALORES PASSADOS NA SESSION['tasks']
-    unset($_GET['clear']); //REMOVE OS VALORES PASSADOS NA SESSION['clear']
-}
 #
 #em resumo inicia a variavel global $_SESSION e cria nela um array vazio 
 #com a chave de referencia ['tasks'] e atraves do get submetido no form
@@ -34,7 +32,7 @@ if(isset($_GET['clear'])){ //VERIFICA SE EXISTE clear NA REQUISIÇÃO
             <h1>Gerenciador de Tarefas</h1>
         </div>
         <div class="form">
-            <form action="/assets/script/task.php" method="POST">
+            <form action="/assets/script/task.php" method="POST" enctype="multipart/form-data">
                 <input type="hidden" name="insert" value="insert">
                 <label for="task_name">Tarefa</label>
                 <input type="text" name="task_name" placeholder="Nome da Tarefa">
@@ -42,6 +40,8 @@ if(isset($_GET['clear'])){ //VERIFICA SE EXISTE clear NA REQUISIÇÃO
                 <input type="text" name="task_description" placeholder="Descrição da Tarefa">
                 <label for="task_date">Data</label>
                 <input type="date" name="task_date">
+                <label for="task_image">Imagem</label>
+                <input type="file" name="task_image">
                 <button type="submit">Cadastrar</button>
             </form>
             <?php
@@ -75,13 +75,7 @@ if(isset($_GET['clear'])){ //VERIFICA SE EXISTE clear NA REQUISIÇÃO
                     echo "</ul>";
                 }
                 #se existir dados na sessão o for percorre os dados e exibe
-            ?>
-            <div class="form">
-                <form action="#" method="GET">
-                    <input type="hidden" name="clear" value="clear">
-                    <button type="submit">Limpar Tarefas</button>
-                </form>
-            </div>            
+            ?>                       
         </div>
         <div class="footer">
             <p>Desenvolvido por @camiladacosta</p>
