@@ -6,15 +6,6 @@ if(!isset($_SESSION['tasks'])){ //VERIFICA SE NA SESSÃO INICIADA A CHAVE ['task
     $_SESSION['tasks'] = array(); //SE NÃO FOR, É INICIALIZADA COMO ARRAY VAZIO
 }
 
-if(isset($_GET['task_name'])){ //VERIFICA SE EXISTE task_name NA REQUISIÇÃO
-    if($_GET['task_name'] != ""){
-        array_push($_SESSION['tasks'], $_GET['task_name']); // SE EXISTIR ADICIONA O VALOR DENTRO DA SESSÃO['tasks'] INICIADA ACIMA
-        unset($_GET['task_name']); //REMOVE O PARAMETRO DA REQUISICAO
-    }else{
-        $_SESSION['message'] = "O campo nome da tarefa não pode ser vazio";
-    }
-}
-
 if(isset($_GET['clear'])){ //VERIFICA SE EXISTE clear NA REQUISIÇÃO
     unset($_SESSION['tasks']); //REMOVE OS VALORES PASSADOS NA SESSION['tasks']
     unset($_GET['clear']); //REMOVE OS VALORES PASSADOS NA SESSION['clear']
@@ -25,10 +16,6 @@ if(isset($_GET['clear'])){ //VERIFICA SE EXISTE clear NA REQUISIÇÃO
 #pega os valores inseridos pelo usuário e armazena na sessão['tasks']
 #
 
-if(isset($_GET['key'])){ //VERIFICA SE EXISTE key NA REQUISIÇÃO | Key OBTIDO PELA FUNÇÃO JS DO FORM
-    array_splice($_SESSION['tasks'], $_GET['key'], 1); //FUNÇÃO QUE REMOVE ELEMENTOS DO ARRAY ['tasks] na posição ['key']
-    unset($_GET['key']); //REMOVE OS VALORES PASSADOS NA SESSION['key']
-}
 ?>
 
 <!DOCTYPE html>
@@ -47,9 +34,14 @@ if(isset($_GET['key'])){ //VERIFICA SE EXISTE key NA REQUISIÇÃO | Key OBTIDO P
             <h1>Gerenciador de Tarefas</h1>
         </div>
         <div class="form">
-            <form action="#" method="GET">
+            <form action="/assets/script/task.php" method="POST">
+                <input type="hidden" name="insert" value="insert">
                 <label for="task_name">Tarefa</label>
                 <input type="text" name="task_name" placeholder="Nome da Tarefa">
+                <label for="task_description">Descrição</label>
+                <input type="text" name="task_description" placeholder="Descrição da Tarefa">
+                <label for="task_date">Data</label>
+                <input type="date" name="task_date">
                 <button type="submit">Cadastrar</button>
             </form>
             <?php
@@ -67,12 +59,12 @@ if(isset($_GET['key'])){ //VERIFICA SE EXISTE key NA REQUISIÇÃO | Key OBTIDO P
                     echo "<ul>";
                     foreach ($_SESSION['tasks'] as $key => $task){
                         echo "<li>
-                                <span>$task</span>
+                                <span>" . $task['task_name'] ."</span>
                                 <button type='button' class='btn-clear' onclick='deletar$key()'>Remover</button>
                                 <script>
                                     function deletar$key(){
                                         if(confirm('Confirmar remoção?')){
-                                            window.location = 'http://localhost:88/?key=$key';
+                                            window.location = 'http://localhost:88/assets/script/task.php?key=$key';
                                         }
                                         return false;
                                     }

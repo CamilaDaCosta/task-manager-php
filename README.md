@@ -7,3 +7,8 @@ Com esses passos concluídos é necessário apenas que utilize o seguinte comand
 docker-compose up -d
 ```
 E pronto já poderá executar este projeto.
+## commits
+### [aula 01](https://github.com/CamilaDaCosta/task-manager-php/tree/39cbd87f65b0cc987eb7bf7c9ea4845d2c4ba32d)
+Criação do Projeto base, nele é possivel cadastrar o nome das tarefas e excluir todas de uma vez.
+### [aula 02](https://github.com/CamilaDaCosta/task-manager-php/tree/fbe0e410fd12a10bdf5ae0112d906dae2b1c51fa)
+Nessa versão é possivel excluir as tarefas individualmente e tambem foi adicionada uma validação que impede que o usuário insira uma tarefa sem nome.
