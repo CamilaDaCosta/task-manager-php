@@ -1,0 +1,116 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background: #f3f3f5;
+    color: #333;
+    font-family: 'Poppins', sans-serif; 
+}
+
+.container{
+    background: #fff;    
+    border-radius: 20px;
+    max-width: 450px;
+    margin-top: 5%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 12px;
+}
+
+.header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin:4px 0;
+}
+
+.form{
+    margin:4px 0;
+}
+
+.form form{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.form label{
+    font-weight: bold;
+    margin: 4px 0;
+}
+
+.form input{
+    height: 32px;
+    margin: 4px 0;
+    padding-left: 12px;
+    border: 1px solid #999;
+    border-radius: 8px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.form input:focus{
+    background: #f0f0f5;
+}
+
+.form button{
+    background: #3615c8;
+    height: 40px;
+    border: none;
+    border-radius: 8px;
+    color: #FFF;
+    margin: 4px 0;
+    font-family: 'Poppins', sans-serif;
+
+    transition: background 0.3s;
+}
+
+.form button:hover{
+    background: #2f0dc7;
+}
+
+.separator{
+    background: #bbb;
+    height: 2px;
+    border-radius: 1px;
+}
+
+.list-tasks{
+    margin: 12px 0;
+}
+
+.list-tasks ul{
+    list-style: none;
+}
+
+.list-tasks ul li{
+    background: #6f48dd;
+    height: 54px;    
+    border-radius: 8px;
+    color: #FFF;
+    margin: 4px 0;
+    padding: 12px;
+
+    display: flex;
+    justify-content: left;
+    align-items: center;
+
+    transition: background 0.3s;
+} 
+
+.list-tasks ul li:hover{
+    background: #6d3af8;
+}
+
+.footer{
+    background: #f0f0f5;
+    border-radius: 4px;
+    padding: 12px;
+}
+
+.footer p{
+    color:rgb(88, 88, 88);
+    font-size: 14px;
+}
