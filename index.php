@@ -1,11 +1,18 @@
 <?php
 
-session_start();//INICIA A SESSÃO
-$_DIR = '/assets/script/'; //DIRETÓRIO DO SCRIPT
+require __DIR__ . '/assets/script/connect.php';
+
+session_start();
+
+$_DIR = '/assets/script/';
 
 if(!isset($_SESSION['tasks'])){
     $_SESSION['tasks'] = array();
 }
+
+$query = $pdo->prepare("select * from tasks");
+$query->execute();
+$query->setFetchMode(PDO::FETCH_ASSOC);
 
 ?>
 
@@ -32,9 +39,10 @@ if(!isset($_SESSION['tasks'])){
                 <label for="task_description">Descrição</label>
                 <input type="text" name="task_description" placeholder="Descrição da Tarefa">
                 <label for="task_date">Data</label>
-                <input type="date" name="task_date">
+                <input type="date" name="task_date" class="task-date">
                 <label for="task_image">Imagem</label>
-                <input type="file" name="task_image">
+                <label for="task_image" class="input-file">Escolher Arquivo</label>
+                <input type="file" name="task_image" id="task_image">                
                 <button type="submit">Cadastrar</button>
             </form>
             <?php
@@ -47,25 +55,24 @@ if(!isset($_SESSION['tasks'])){
         <div class="separator">
         </div>
         <div class="list-tasks">
-            <?php
-                if(isset($_SESSION['tasks'])){
-                    echo "<ul>";
-                    foreach ($_SESSION['tasks'] as $key => $task){
-                        echo "<li>
-                                <a href='".$_DIR."details.php?key=$key'>" . $task['task_name'] ."</a>
-                                <button type='button' class='btn-clear' onclick='deletar$key()'>Remover</button>
-                                <script>
-                                    function deletar$key(){
-                                        if(confirm('Confirmar remoção?')){
-                                            window.location = 'http://localhost:88/$_DIR/task.php?key=$key';
-                                        }
-                                        return false;
-                                    }
-                                </script>
-                              </li>";                        
-                    }
-                    echo "</ul>";
-                }                
+            <?php            
+                echo "<ul>";
+                foreach ($query->fetchAll() as $task)
+                {
+                echo "<li>
+                        <a href='".$_DIR."details.php?key=". $task['id'] ."'>" . $task['task_name'] ."</a>
+                        <button type='button' class='btn-clear' onclick='deletar". $task['id'] ."()'>Remover</button>
+                        <script>
+                            function deletar". $task['id'] ."(){
+                                if(confirm('Confirmar remoção?')){
+                                    window.location = 'http://localhost:88/$_DIR/task.php?key=". $task['id'] ."';
+                                }
+                                return false;
+                            }
+                        </script>
+                    </li>";                        
+                }
+                echo "</ul>";
             ?>                       
         </div>
         <div class="footer">
