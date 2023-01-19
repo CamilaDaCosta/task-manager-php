@@ -94,7 +94,7 @@ body{
     padding: 12px;
 
     display: flex;
-    justify-content: left;
+    justify-content: space-between;
     align-items: center;
 
     transition: background 0.3s;
@@ -102,6 +102,22 @@ body{
 
 .list-tasks ul li:hover{
     background: #6d3af8;
+}
+
+.btn-clear{
+    background: #3615c8;
+    height: 40px;
+    border: none;
+    border-radius: 8px;
+    color: #FFF;    
+    width: 70px;    
+    font-family: 'Poppins', sans-serif;
+
+    transition: background 0.3s;      
+}
+
+.btn-clear:hover{
+    background: #2f0dc7;
 }
 
 .footer{
