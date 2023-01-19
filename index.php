@@ -1,18 +1,11 @@
 <?php
 
 session_start();//INICIA A SESSÃO
+$_DIR = '/assets/script/'; //DIRETÓRIO DO SCRIPT
 
-if(!isset($_SESSION['tasks'])){ //VERIFICA SE NA SESSÃO INICIADA A CHAVE ['task'] JA FOI DEFINIDA
-    $_SESSION['tasks'] = array(); //SE NÃO FOR, É INICIALIZADA COMO ARRAY VAZIO
+if(!isset($_SESSION['tasks'])){
+    $_SESSION['tasks'] = array();
 }
-echo("AULA04 - RETORNO: ");
-var_dump($_SESSION['tasks']);//aula04 - verificar todos os dados da sessao
-
-#
-#em resumo inicia a variavel global $_SESSION e cria nela um array vazio 
-#com a chave de referencia ['tasks'] e atraves do get submetido no form
-#pega os valores inseridos pelo usuário e armazena na sessão['tasks']
-#
 
 ?>
 
@@ -32,7 +25,7 @@ var_dump($_SESSION['tasks']);//aula04 - verificar todos os dados da sessao
             <h1>Gerenciador de Tarefas</h1>
         </div>
         <div class="form">
-            <form action="/assets/script/task.php" method="POST" enctype="multipart/form-data">
+            <form action="<?=$_DIR?>/task.php" method="POST" enctype="multipart/form-data">
                 <input type="hidden" name="insert" value="insert">
                 <label for="task_name">Tarefa</label>
                 <input type="text" name="task_name" placeholder="Nome da Tarefa">
@@ -59,22 +52,20 @@ var_dump($_SESSION['tasks']);//aula04 - verificar todos os dados da sessao
                     echo "<ul>";
                     foreach ($_SESSION['tasks'] as $key => $task){
                         echo "<li>
-                                <span>" . $task['task_name'] ."</span>
+                                <a href='".$_DIR."details.php?key=$key'>" . $task['task_name'] ."</a>
                                 <button type='button' class='btn-clear' onclick='deletar$key()'>Remover</button>
                                 <script>
                                     function deletar$key(){
                                         if(confirm('Confirmar remoção?')){
-                                            window.location = 'http://localhost:88/assets/script/task.php?key=$key';
+                                            window.location = 'http://localhost:88/$_DIR/task.php?key=$key';
                                         }
                                         return false;
                                     }
                                 </script>
-                              </li>";
-                        #deletar$key => redireciona para a mesma url passando o valor de $key especificado pela posição para fazer o remove
+                              </li>";                        
                     }
                     echo "</ul>";
-                }
-                #se existir dados na sessão o for percorre os dados e exibe
+                }                
             ?>                       
         </div>
         <div class="footer">

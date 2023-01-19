@@ -10,6 +10,23 @@ body{
     font-family: 'Poppins', sans-serif; 
 }
 
+a{
+    text-decoration: none;
+    color: #fff;
+}
+
+a:link{
+    text-decoration: none;
+}
+
+a:visited{
+    text-decoration: none;
+}
+
+a:hover{
+    font-weight: bold;
+}
+
 .container{
     background: #fff;    
     border-radius: 20px;
@@ -129,4 +146,54 @@ body{
 .footer p{
     color:rgb(88, 88, 88);
     font-size: 14px;
+}
+
+/*DETAILS*/
+.details-container{
+    background: #fff;
+    max-width: 700px;    
+    margin-top:5%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 12px;
+}
+
+.row{
+    display: flex;
+    justify-content: space-between;
+    padding: 12px;
+}
+
+.details{
+    width: 300px;
+    border: 1px solid #f0f0f5;
+    border-radius: 4px;
+    margin-right: 4px;
+    padding: 16px;
+}
+
+.details dl dt{
+    margin:4px auto;
+    font-weight: bold;
+    color: #666;
+}
+
+.details dl dd{
+    margin-top: 4px;
+    margin-bottom: 12px;
+    color: #999;
+}
+
+.image{
+    width: 400px;
+    border: 1px solid #f0f0f5;
+    border-radius: 4px;
+    margin:auto 8px;
+    padding: 16px;
+}
+
+.image img{
+    max-width: 100%;
+    max-height: 600px;
+    height: auto;
 }

@@ -14,3 +14,5 @@ Criação do Projeto base, nele é possivel cadastrar o nome das tarefas e exclu
 Nessa versão é possivel excluir as tarefas individualmente e tambem foi adicionada uma validação que impede que o usuário insira uma tarefa sem nome.
 ### [aula 03](https://github.com/CamilaDaCosta/task-manager-php/tree/d1401fbd07e601829fd78af37ce0bea710950713)
 Nessa versão foram adicionados novos campos (descrição e data), foi feita uma divisão da lógica do projeto em outro arquivo (task.php) e também criado um array bidimensional('chave' => $valor) para armazenar os dados fornecidos pelo usuário, agora via $_POST.
+### [aula04](https://github.com/CamilaDaCosta/task-manager-php/tree/d7c44ce02bb143bd48f790b6611e0030f43c583d)
+Nessa aula foi exposto como realizar upload de arquivos utilizando a sessão do php. Foi retirada a exlusão de todos os registros.
