@@ -1,5 +1,7 @@
 <?php
 
+require __DIR__ . '/connect.php';
+
 session_start();
 
 if(isset($_POST['task_name'])){
@@ -13,19 +15,20 @@ if(isset($_POST['task_name'])){
             move_uploaded_file($_FILES['task_image']['tmp_name'],$dir.$file_name);
         }
 
-        $data = [
-            'task_name' => $_POST['task_name'],
-            'task_description' => $_POST['task_description'],
-            'task_date' => $_POST['task_date'],
-            'task_image' => $file_name,
-        ];
+        $query = $pdo->prepare('INSERT INTO tasks (task_name, task_description, task_image, task_date)
+                                VALUES (:name, :description, :image, :date)');
+        $query->bindParam('name', $_POST['task_name']);
+        $query->bindParam('description', $_POST['task_description']);
+        $query->bindParam('image', $file_name);
+        $query->bindParam('date', $_POST['task_date']);
 
-        array_push($_SESSION['tasks'], $data);
-        unset($_POST['task_name']);
-        unset($_POST['task_description']);
-        unset($_POST['task_date']);
-
-        header('Location:/index.php');
+        if($query->execute()){
+            $_SESSION['success'] = "Dados Cadastrados";
+            header('Location:/index.php');
+        }else{
+            $_SESSION['error'] = "Dados Não Cadastrados";
+            header('Location:/index.php');
+        }
     }else{
         $_SESSION['message'] = "O campo nome da tarefa não pode ser vazio";
         header('Location:/index.php');
@@ -33,8 +36,16 @@ if(isset($_POST['task_name'])){
 }
 
 if(isset($_GET['key'])){
-    array_splice($_SESSION['tasks'], $_GET['key'], 1);
-    unset($_GET['key']);
+    $query= $pdo->prepare('DELETE FROM tasks WHERE id = :id');
+    $query->bindParam(':id', $_GET['key']);
     header('Location:/index.php');
+
+    if($query->execute()){
+        $_SESSION['success'] = "Dados Removidos";
+        header('Location:/index.php');
+    }else{
+        $_SESSION['error'] = "Dados Não Removidos";
+        header('Location:/index.php');
+    }
 }
 ?>

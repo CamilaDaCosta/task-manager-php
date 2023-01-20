@@ -18,7 +18,7 @@ Nessa versão foram adicionados novos campos (descrição e data), foi feita uma
 Nessa aula foi exposto como realizar upload de arquivos utilizando a sessão do php. Foi retirada a funcionalidade de exclusão de todos os registros.
 ### [aula05](https://github.com/CamilaDaCosta/task-manager-php/tree/7f707676385164305595912f5896abe5002259d9)
 Nessa versão foi criada a página de detalhes da tarefa, realizei a refatoração de alguns detalhes do código e também retirei os comentários para melhor visualização e que não eram mais necessários neste estágio do projeto
-### [aula06]() - Atual :zap:
+### [aula06](https://github.com/CamilaDaCosta/task-manager-php/tree/6a936a3beb974db04fb4f9311039e852bb38dea3)
 Como estou utilizando docker o processo nessa parte foi bem diferente do exposto na videoaula, então contarei o meu processo:
 Exlui o container criado anteriormente, para evitar erros:
 ```
@@ -73,3 +73,5 @@ docker-compose stop
 ```
 docker-compose start
 ```
+### [aula07]() - Atual :zap:
+Nessa versão utilizei a videoaula como base para realizar o cadastro, exibição e deleção dos dados utilizando o banco de dados mysql que criei no commit anterior. Fiz algumas modificações próprias para exibir o nome do arquivo selecionado, utilizando javascript e também algumas modificações de layout.

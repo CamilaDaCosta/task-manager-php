@@ -137,9 +137,9 @@ a:hover{
     background: #2f0dc7;
 }
 
-.task-date{
+/* .task-date{
     width: 40%;
-}
+} */
 
 /*BOTAO ENVIAR IMAGEM ESTILIZADO*/
 input[type="file"] {
@@ -148,6 +148,7 @@ input[type="file"] {
 
 .input-file{
     text-align: center;
+    width: 50%;
     font-size: 12px;
     padding: 6px;
     height: 32px;
@@ -156,6 +157,19 @@ input[type="file"] {
     background-color: #FFF;           
     font-family: 'Poppins', sans-serif;
     cursor:pointer;
+}
+
+.image-container{
+    display: flex; 
+}
+
+.image-name{
+    margin: 8px;
+}
+
+.alert-size{
+    font-size: 12px;
+    font-weight: bold;
 }
 
 .input-file:hover{
@@ -221,4 +235,24 @@ input[type="file"] {
     max-width: 100%;
     max-height: 600px;
     height: auto;
+}
+
+.alert-success{
+    background: #84d58a;
+    margin: 4px;
+    padding: 8px;    
+    color:#118319;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 12px;
+}
+
+.alert-error{
+    background: #ff6933;
+    margin: 4px;
+    padding: 8px;    
+    color:#b33102;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 12px;
 }

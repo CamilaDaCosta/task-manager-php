@@ -1,8 +1,13 @@
 <?php
 
+require __DIR__ . '/connect.php';
+
 session_start();
 
-$data = $_SESSION['tasks'][$_GET['key']];
+$query = $pdo->prepare('SELECT * FROM tasks WHERE id = :id');
+$query->bindParam(':id', $_GET['key']);
+$query->execute();
+$data = $query->fetchAll();
 
 ?>
 
@@ -19,19 +24,19 @@ $data = $_SESSION['tasks'][$_GET['key']];
 <body>
     <div class="details-container">
         <div class="header">
-            <h1><?php echo $data['task_name']; ?></h1>
+            <h1><?php echo $data[0]['task_name']; ?></h1>
         </div>
         <div class="row">
             <div class="details">
                 <dl>
                     <dt>Descrição da Tarefa</dt>
-                    <dd><?php echo $data['task_description']?></dd>
+                    <dd><?php echo $data[0]['task_description']?></dd>
                     <dt>Data da Tarefa</dt>
-                    <dd><?php echo $data['task_date']?></dd>
+                    <dd><?php echo $data[0]['task_date']?></dd>
                 </dl>
             </div>
             <div class="image">
-                <img src="/uploads/<?php echo $data['task_image'] ?>" alt="Imagem da Task">
+                <img src="/uploads/<?php echo $data[0]['task_image'] ?>" alt="Imagem da Task">
             </div>
         </div>
         <div class="footer">

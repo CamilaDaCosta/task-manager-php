@@ -12,7 +12,7 @@ if(!isset($_SESSION['tasks'])){
 
 $query = $pdo->prepare("select * from tasks");
 $query->execute();
-$query->setFetchMode(PDO::FETCH_ASSOC);
+$query->setFetchMode(PDO::FETCH_ASSOC); //define o modo de busca como FETCH_ASSOC => ou seja serão retornados como um array associativo
 
 ?>
 
@@ -22,12 +22,31 @@ $query->setFetchMode(PDO::FETCH_ASSOC);
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/assets/css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <script src="/assets/js/script.js" defer></script>
     <title>Task Manager</title>
 </head>
 <body>
     <div class="container">
+        <?php
+            if(isset($_SESSION['success'])){//if
+        ?>
+            <div class="alert-success"><?php echo $_SESSION['success'];?></div>
+        <?php
+                unset($_SESSION['success']);
+            }//if
+        ?>
+
+        <?php
+            if(isset($_SESSION['error'])){//if
+        ?>
+            <div class="alert-error"><?php echo $_SESSION['error'];?></div>
+        <?php
+                unset($_SESSION['error']);
+            }//if
+        ?>
+
         <div class="header">
             <h1>Gerenciador de Tarefas</h1>
         </div>
@@ -40,9 +59,17 @@ $query->setFetchMode(PDO::FETCH_ASSOC);
                 <input type="text" name="task_description" placeholder="Descrição da Tarefa">
                 <label for="task_date">Data</label>
                 <input type="date" name="task_date" class="task-date">
-                <label for="task_image">Imagem</label>
-                <label for="task_image" class="input-file">Escolher Arquivo</label>
-                <input type="file" name="task_image" id="task_image">                
+
+                <label for="">Imagem</label>
+                <div class="image-container">
+                    <input type="file" name="task_image" id="task_image">
+                    <label for="task_image" class="input-file">
+                        <span>Escolher Arquivo</span>
+                    </label>
+                    <span class="image-name"></span>
+                </div>
+                <span class="alert-size">*Até 1mb</span>
+                
                 <button type="submit">Cadastrar</button>
             </form>
             <?php
