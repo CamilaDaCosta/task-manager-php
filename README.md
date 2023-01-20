@@ -1,13 +1,20 @@
 # Task Manager - PHP
-Projeto de Estudo prático desenvolvido com base nas aulas disponibilizadas pelo canal AM Projetos WEB nessa [PLAYLIST](https://www.youtube.com/watch?v=dJ49I-QYYUk&list=PL1KWVrkOhKP1JTmUmBgrc6Bp6u20Bc6rT&index=1). Consiste em um Gerenciador de Tarefas.
-## para executar
+Projeto de Estudo prático desenvolvido tendo como base as aulas disponibilizadas pelo canal *AM Projetos WEB* nessa [PLAYLIST](https://www.youtube.com/watch?v=dJ49I-QYYUk&list=PL1KWVrkOhKP1JTmUmBgrc6Bp6u20Bc6rT&index=1). Consiste em um Gerenciador de Tarefas.
+
+## :art: Telas Versão 1.0
+![version-01-index](https://user-images.githubusercontent.com/63813842/213593894-f925c4b2-b89c-4ffe-a499-8cda478ad9a0.png)
+![version-01-details](https://user-images.githubusercontent.com/63813842/213593898-efd384c1-3125-4200-a7c4-0cc1257a95a0.png)
+
+
+## :zap: para executar
 Nesse projeto utilizei o docker para rodar o servidor php, então, para executá-lo é necessário que tenha o docker previamente instalado e iniciado.
 Com esses passos concluídos é necessário apenas que utilize o seguinte comando:
 ```
 docker-compose up -d
 ```
 E pronto já poderá executar este projeto.
-## commits
+
+## :pencil: commits
 ### [aula 01](https://github.com/CamilaDaCosta/task-manager-php/tree/39cbd87f65b0cc987eb7bf7c9ea4845d2c4ba32d)
 Criação do Projeto base, nele é possivel cadastrar o nome das tarefas e excluir todas de uma vez.
 ### [aula 02](https://github.com/CamilaDaCosta/task-manager-php/tree/fbe0e410fd12a10bdf5ae0112d906dae2b1c51fa)
@@ -19,7 +26,11 @@ Nessa aula foi exposto como realizar upload de arquivos utilizando a sessão do 
 ### [aula05](https://github.com/CamilaDaCosta/task-manager-php/tree/7f707676385164305595912f5896abe5002259d9)
 Nessa versão foi criada a página de detalhes da tarefa, realizei a refatoração de alguns detalhes do código e também retirei os comentários para melhor visualização e que não eram mais necessários neste estágio do projeto
 ### [aula06](https://github.com/CamilaDaCosta/task-manager-php/tree/6a936a3beb974db04fb4f9311039e852bb38dea3)
-Como estou utilizando docker o processo nessa parte foi bem diferente do exposto na videoaula, então contarei o meu processo:
+Nessa etapa foi criado um banco de dados para poder se comunicar com a aplicação e poder salvar os dados.<br/>
+Como estou utilizando docker o processo nessa parte foi bem diferente do exposto na videoaula, clique em 'Saiba Mais' para verificar:
+<details>
+  <summary>Saiba Mais</summary>
+  
 Exlui o container criado anteriormente, para evitar erros:
 ```
 docker-compose down -v --rmi all
@@ -73,5 +84,7 @@ docker-compose stop
 ```
 docker-compose start
 ```
+</details>
+
 ### [aula07]() - Atual :zap:
-Nessa versão utilizei a videoaula como base para realizar o cadastro, exibição e deleção dos dados utilizando o banco de dados mysql que criei no commit anterior. Fiz algumas modificações próprias para exibir o nome do arquivo selecionado, utilizando javascript e também algumas modificações de layout.
+Nessa versão utilizei a videoaula como base para realizar o cadastro, exibição e deleção dos dados utilizando o banco de dados mysql que criei no commit anterior.<br/> Fiz algumas modificações próprias para exibir o nome do arquivo selecionado, utilizando javascript e também algumas modificações de layout.
